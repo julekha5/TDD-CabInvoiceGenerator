@@ -18,4 +18,17 @@ public class CabServiceInvoice {
 		return Math.max(totalFare, MINIMUM_FARE);
 	}
 
+	/**
+	 * 
+	 * @param rides calculate multiple rides fare
+	 * @return totalfare of multiple rides
+	 */
+	public double CalculateFare(Ride[] rides) {
+		double totalFare = 0.0;
+		for (Ride ride : rides) {
+			totalFare += this.CalculateFare(ride.distance, ride.time);
+		}
+		return totalFare;
+	}
+
 }
