@@ -1,7 +1,5 @@
 package com.bridgelabz.tddpackage;
 
-import com.bridgelabz.tddpackage.CabServiceInvoice.RideType;
-
 /**
  * Ride class  
  */
@@ -17,5 +15,4 @@ public class Ride {
 		this.userID = userID;
 		this.type = type;
 	}
-
 }
