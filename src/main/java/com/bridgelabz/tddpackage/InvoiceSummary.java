@@ -9,11 +9,24 @@ public class InvoiceSummary {
 	final double averageFare;
 	final String userID;
 
-	public InvoiceSummary(String userID, double totalFare) {
+//	public InvoiceSummary(int numOfRides, double totalFare ) {
+//		this.numOfRides = numOfRides;
+//		this.totalFare = totalFare;
+//		this.averageFare = this.totalFare/this.numOfRides;
+//
+//	}
+	public InvoiceSummary(double totalFare, double totalFare2) {
 		this.numOfRides = 0;
-		this.averageFare = 0;
-		this.userID = userID;
 		this.totalFare = totalFare;
+		this.averageFare = 0;
+		this.userID = "";
+	}
+
+	public InvoiceSummary(double totalFare2) {
+		this.numOfRides = 0;
+		this.totalFare = totalFare2;
+		this.averageFare = 0;
+		this.userID = "";
 	}
 
 	@Override

@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.bridgelabz.tddpackage.CabServiceInvoice.RideType;
+
 /**
  * JUnit test for CabServiceInvoice.
  */
@@ -30,7 +32,8 @@ public class CabServiceInvoiceTest {
 	public void givenDistanceAndTime_CalculateFareOfCab_ShouldPassTest() {
 		double distance = 2.0;
 		int time = 5;
-		double fare = cabs.CalculateFare(distance, time);
+		RideType type = null;
+		double fare = cabs.CalculateFare(distance, time, type);
 		Assert.assertEquals(25, fare, 0.0);
 	}
 
@@ -39,18 +42,22 @@ public class CabServiceInvoiceTest {
 	public void givenLessDistanceAndTime_ShouldReturnMinimumFare() {
 		double distance = 0.1;
 		int time = 1;
-		double fare = cabs.CalculateFare(distance, time);
+		RideType type = null;
+		double fare = cabs.CalculateFare(distance, time, type);
 		Assert.assertEquals(5, fare, 0.0);
 	}
 
 	/**
-	 * Invoice service of user using id
+     *Premium rides and normal 
 	 */
 	@Test
 	public void givenUserIdWhenAdded_ShouldReturnInvoice() {
-		Ride[] rides = { new Ride(2.0,5,"1"), new Ride(0.1,1,"2"), new Ride(2.0,5,"1")};
+		Ride[] rides = { 
+				new Ride(2.0,5,"1",cabs.RideType.NORMAL), 
+				new Ride(0.1,1,"1",cabs.RideType.PREMIUM), 
+				new Ride(2.0,5,"2",cabs.RideType.NORMAL)};
 		InvoiceSummary summary = cabs.UserInvoice(rides,"1");
-		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary("1",57);
+		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(45);
 		Assert.assertEquals(expectedInvoiceSummary, summary);
 	}
 	
