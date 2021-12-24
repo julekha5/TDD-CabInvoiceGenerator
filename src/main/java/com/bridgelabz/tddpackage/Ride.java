@@ -5,10 +5,11 @@ package com.bridgelabz.tddpackage;
 public class Ride {
 	protected double distance;
 	protected int time;
+	protected String userID;
 
-	public Ride(double distance, int time) {
+	public Ride(double distance, int time, String userID) {
 		this.distance = distance;
 		this.time = time;
-
+		this.userID = userID;
 	}
 }

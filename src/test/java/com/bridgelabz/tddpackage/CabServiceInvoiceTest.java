@@ -43,14 +43,16 @@ public class CabServiceInvoiceTest {
 		Assert.assertEquals(5, fare, 0.0);
 	}
 
-	/**Step 3:
-	 * Enhanced Invoice
+	/**
+	 * Invoice service of user using id
 	 */
-	public void givenMultipleRides_ShouldReturnInvoiceSummary() {
-		Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1), };
-		InvoiceSummary summary = cabs.CalculateFare(rides);
-		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+	@Test
+	public void givenUserIdWhenAdded_ShouldReturnInvoice() {
+		Ride[] rides = { new Ride(2.0,5,"1"), new Ride(0.1,1,"2"), new Ride(2.0,5,"1")};
+		InvoiceSummary summary = cabs.UserInvoice(rides,"1");
+		InvoiceSummary expectedInvoiceSummary = new InvoiceSummary("1",57);
 		Assert.assertEquals(expectedInvoiceSummary, summary);
 	}
-    
+	
+	 
 }

@@ -1,31 +1,29 @@
 package com.bridgelabz.tddpackage;
 
+import java.util.Objects;
+
 public class InvoiceSummary {
 
-	private final int numOfRides;
-	private final double totalFare;
-	private final double averageFare;
+	final int numOfRides;
+	final double totalFare;
+	final double averageFare;
+	final String userID;
 
-	public InvoiceSummary(int numOfRides, double totalFare) {
-		this.numOfRides = numOfRides;
+	public InvoiceSummary(String userID, double totalFare) {
+		this.numOfRides = 0;
+		this.averageFare = 0;
+		this.userID = userID;
 		this.totalFare = totalFare;
-		this.averageFare = this.totalFare / this.numOfRides;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
+	public boolean equals(Object o) {
+		if (this == o)
 			return true;
-		}
-		if (obj == null) {
+		if (o == null || getClass() != o.getClass())
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		InvoiceSummary other = (InvoiceSummary) obj;
-		return Double.doubleToLongBits(averageFare) == Double.doubleToLongBits(other.averageFare)
-				&& numOfRides == other.numOfRides
-				&& Double.doubleToLongBits(totalFare) == Double.doubleToLongBits(other.totalFare);
+		InvoiceSummary that = (InvoiceSummary) o;
+		return numOfRides == that.numOfRides && Double.compare(that.totalFare, totalFare) == 0
+				&& Objects.equals(averageFare, that.averageFare);
 	}
 }

@@ -18,13 +18,13 @@ public class CabServiceInvoice {
 		return Math.max(totalFare, MINIMUM_FARE);
 	}
 
-	//Enhanced invoice - Return  total number of rides, total fare, average fare
-	public InvoiceSummary CalculateFare(Ride[] rides) {
-		double totalFare = 0.0;
-		for (Ride ride : rides) {
+    //invoice of particular userid
+	public InvoiceSummary UserInvoice(Ride[] rides, String userID) {
+        double totalFare = 0.0;
+        for (Ride ride : rides) {
 			totalFare += this.CalculateFare(ride.distance, ride.time);
 		}
-		return new InvoiceSummary(rides.length, totalFare);
+		return new InvoiceSummary(userID,totalFare);
 	}
 
 }
